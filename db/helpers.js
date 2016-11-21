@@ -1,5 +1,5 @@
-const db = require('./db');
-const bcrypt = require('bcrypt');
+const db      = require('./db'),
+      bcrypt  = require('bcrypt');
 
 module.exports = {
   findUser: userName =>
@@ -10,8 +10,8 @@ module.exports = {
     })
   ,
   getSomeHash: password => new Promise((res, rej) => {
-    bcrypt.hash(password, null, null, (err, hash) => {
-      hash ? res(err) : rej(hash);
-    })
+    bcrypt.hash(password, 10, (err, hash) => {
+      hash ? res(hash) : rej(err);
+    });
   })
 };
