@@ -19,20 +19,5 @@ module.exports = {
         console.log(err)
         err.message == constants.INCORRECT_PASSWORD_MESSAGE || err.message == constants.USER_NOT_FOUND_MESSAGE ? res.status(400).send(err) : res.status(500).send(err);
       });
-  },
-  retrieveUser: (req, res) => {
-    console.log(req.params)
-    User.getUser(req.params.username)
-      .then(response => {
-        res.send(response);
-      }, err => {
-        res.status(404).send(err);
-      });
-  },
-  updateUser: (req, res, next) => {
-
-  },
-  deleteUser: (req, res, next) => {
-
   }
 };
